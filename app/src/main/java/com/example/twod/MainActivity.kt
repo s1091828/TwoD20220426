@@ -74,6 +74,13 @@ class MainActivity : AppCompatActivity() {
                     binding.txv.text = secondsLeft.toString()
                     delay(25)
                 }
+
+                if (secondsLeft == 0){
+                    secondsLeft = 1000
+                    binding.txv.text = secondsLeft.toString()
+                    binding.btnStart.isEnabled = true
+                    binding.btnStop.isEnabled = false
+                }
             }
         }
     }
