@@ -34,7 +34,15 @@ class MainActivity : AppCompatActivity() {
                         binding.btnStop.isEnabled = true
                         delay(25)   //延遲0.025秒
                     }
+
+                    if (secondsLeft == 0){
+                        secondsLeft = 1000
+                        binding.txv.text = secondsLeft.toString()
+                        binding.btnStart.isEnabled = true
+                        binding.btnStop.isEnabled = false
+                    }
                 }
+
 
             }
         })
