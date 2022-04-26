@@ -49,4 +49,25 @@ class MainActivity : AppCompatActivity() {
             }
         })
     }
+
+    //當程式被打斷時，會自動暫停
+    override fun onPause() {
+        super.onPause()
+        job.cancel()
+    }
+
+    //當程式被切回來時，會繼續執行
+    override fun onResume() {
+        super.onResume()
+        if (binding.btnStart.isEnabled == false){
+            job = GlobalScope.launch(Dispatchers.Main) {
+                while(secondsLeft > 0) {
+                    secondsLeft--
+                    binding.txv.text = secondsLeft.toString()
+                    delay(25)
+                }
+            }
+        }
+    }
+
 }
